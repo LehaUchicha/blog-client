@@ -1,0 +1,18 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="page">
+	<header> это заголовок </header>
+	<article class="posts">
+		<article class = "post" *ngFor="let greeting of greetings | async">
+			<header>{{greeting.content}}</header>
+			<article>{{greeting.id}}</article>
+		</article>
+	</article>
+
+	<nav>
+		<ul>
+			<li *ngFor="let greeting of greetings | async"><a href="#">{{greeting.content}}</a></li>
+		</ul></nav>
+	<footer>@C Alex</footer>
+<div>
+
+
