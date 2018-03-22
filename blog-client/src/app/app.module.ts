@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
- 
+import { HttpModule } from '@angular/http'; 
 import { AppComponent } from './app.component';
-import { GreetingService } from "app/services/greeting.service";
+import { PostService } from "app/services/post.service";
+import { ModalModule } from './components/modal/modal.module';
 
 @NgModule({
   declarations: [
@@ -13,9 +13,10 @@ import { GreetingService } from "app/services/greeting.service";
   imports: [
     BrowserModule,
 	FormsModule,
-	HttpModule
+	HttpModule,
+	ModalModule
   ],
-  providers: [GreetingService],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

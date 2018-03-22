@@ -1,18 +1,72 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="page">
-	<header> это заголовок </header>
-	<article class="posts">
-		<article class = "post" *ngFor="let greeting of greetings | async">
-			<header>{{greeting.content}}</header>
-			<article>{{greeting.id}}</article>
-		</article>
-	</article>
+<!DOCTYPE html>
+<article class="page">
 
-	<nav>
-		<ul>
-			<li *ngFor="let greeting of greetings | async"><a href="#">{{greeting.content}}</a></li>
-		</ul></nav>
-	<footer>@C Alex</footer>
-<div>
+	<header class="panel panel-default"> 
+		<div class="panel-body">
+			Заголовок 
+		</div> 
+	</header>
+	
+	
+	<article class="panel panel-default posts">
+		<section>
+			<button class="btn btn-info" (click)="modal.show()">создать</button>
+		</section>
+		
+		<article class="panel panel-primary" *ngFor="let post of posts | async">
+			<header class="panel-heading">{{post.id}} {{post.title}}</header>
+			<article class="panel-body">{{post.text}}</article>
+			<section>
+				<div class="btn-group" role="group" aria-label="...">
+				  <button type="button" class="btn btn-danger">удалить</button>
+				  <button type="button" class="btn btn-success">редактировать</button>				  
+				</div>
+			</section>
+		</article>
+		
+	</article>
+	
+	<nav class="panel panel-default posts">
+	
+		<ul class="nav nav-pills nav-stacked">
+			<li *ngFor="let post of posts | async"><a href="#">{{post.text}}</a></li>
+		</ul>		
+	</nav>
+	
+	<div class="separator"></div>	
+				<div class="form-group">
+                    <label>id</label>
+                    <input class="form-control" type="number" name="id" [(ngModel)]="post.id" />
+                </div>
+                <div class="form-group">
+                    <label>title</label>
+                    <input class="form-control" name="title" [(ngModel)]="post.title" />
+                </div>
+				<div class="form-group">
+                    <label>text</label>
+                    <input class="form-control" name="text" [(ngModel)]="post.text" />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" (click)="create(post)">Cоздать</button>
+                </div>
+							
+				
+	<!--app-modal #modal>
+		<div class="app-modal-header">
+		  header
+		</div>
+		<div class="app-modal-body">
+		  Whatever content you like, form fields, anything
+		</div>
+		<div class="app-modal-footer">
+		  <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+		  <button type="button" class="btn btn-primary">Save changes</button>
+		</div>
+  </app-modal-->
+                
+
+	<footer><span class="label label-info">@C Alex</span></footer>
+<article>
 
 
