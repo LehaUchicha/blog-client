@@ -11,7 +11,7 @@
 	
 	<article class="panel panel-default posts">
 		<section>
-			<button class="btn btn-info" (click)="modal.open(null)">создать</button>
+			<button class="btn btn-info" data-toggle="modal" data-target="#createModal">создать</button>
 		</section>
 		
 		<article class="panel panel-primary" *ngFor="let post of posts | async">
@@ -19,48 +19,78 @@
 			<article class="panel-body">{{post.text}}</article>
 			<section>
 				<div class="btn-group" role="group" aria-label="...">
-				  <button type="button" class="btn btn-danger">удалить</button>
-				  <button type="button" class="btn btn-success">редактировать</button>				  
+				  <button type="button" class="btn btn-danger" (click)="deletePost(post.id)">удалить</button>
+				  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#updateModal" (click)="loadPostToEdit(post.id)">редактировать</button>				  
 				</div>
 			</section>
 		</article>
 		
 	</article>
 	
-	<nav class="panel panel-default posts">
-	
+	<nav class="panel panel-default posts">	
 		<ul class="nav nav-pills nav-stacked">
 			<li *ngFor="let post of posts | async"><a href="#">{{post.text}}</a></li>
 		</ul>		
 	</nav>
 	
-	<div class="separator"></div>				
-                <div class="form-group">
-                    <label>title</label>
-                    <input class="form-control" name="title" [(ngModel)]="post.title" />
-                </div>
-				<div class="form-group">
-                    <label>text</label>
-                    <input class="form-control" name="text" [(ngModel)]="post.text" />
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-default" (click)="submit(post)">Cоздать</button>
-                </div>
-							
-				
-	<app-modal #modal>
-		<div class="app-modal-header">
-		  header
-		</div>
-		<div class="app-modal-body">
-		  Whatever content you like, form fields, anything
-		</div>
-		<div class="app-modal-footer">
-		  <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
-		  <button type="button" class="btn btn-primary">Save changes</button>
-		</div>
-  </app-modal>
-                
+	<div class="separator"></div>
+		
+	<!--Modal-->
+	<div id="createModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Создать статью</h4>
+				  </div>
+				  <div class="modal-body">
+					<div class="form-group">
+						<label for="login">Заголовок: </label>
+						<input id="title" class="form-control" name="title" [(ngModel)]="post.title" required />
+					</div>
+					<div class="form-group">
+						<label for="text">Текст: </label>
+						<input id="text" class="form-control" name="text" [(ngModel)]="post.text" required />
+					</div>                
+				  </div>
+				  <div class="modal-footer">
+					<button class="btn btn-default" (click)="createPost(post)" data-dismiss="modal">Cоздать</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				  </div>
+				</div>
+		  </div>
+	</div>      
+
+	<div id="updateModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+		<!-- Modal content-->
+			<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">изменить статью r</h4>
+				  </div>
+				  <form [formGroup]="postForm">
+					  <div class="modal-body">
+						<div class="form-group">
+							<input type="hidden" formControlName="id" hidden="hidden" class="form-control" name="title" [(ngModel)]="post.id"/>
+							<label>title</label>
+							<input formControlName="title" class="form-control" name="title" [(ngModel)]="post.title" required />
+						</div>
+						<div class="form-group">
+							<label>text</label>
+							<input formControlName="text" class="form-control" name="text" [(ngModel)]="post.text" required />
+						</div>                
+					  </div>
+					  <div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal" (click)="updatePost()">Сохранить</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					  </div>
+				  </form>
+				</div>
+		  </div>
+	</div>        	
 
 	<footer><span class="label label-info">@C Alex</span></footer>
 <article>
