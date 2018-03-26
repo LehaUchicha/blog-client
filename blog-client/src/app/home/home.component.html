@@ -7,9 +7,9 @@
 			</div>
 		</section>
 		
-		<article class="panel panel-primary" *ngFor="let post of posts | async">
+		<article class="panel panel-info" *ngFor="let post of posts | async">
 				
-				<a routerLink="/post/{{post.id}}"><h4 class="panel-heading">{{post.title}}</h4></a>
+				<h4 routerLink="/post/{{post.id}}" class="panel-heading">{{post.title}}</h4>
 				<article class="panel-body">
 					<div class="media-left">
 						<a href="#">
@@ -51,17 +51,14 @@
 					<h4 class="modal-title">Создать статью</h4>
 				  </div>
 				  <div class="modal-body">
-					<div class="form-group">
-						<label for="login">Заголовок: </label>
-						<input id="title" class="form-control" name="title" [(ngModel)]="post.title" required />
+					<div class="form-group">						
+						<input id="title" class="form-control" name="title" [(ngModel)]="post.title" placeholder="Заголовок" required />
 					</div>
-					<div class="form-group">
-						<label for="shortText">Короткий текст: </label>
-						<input id="shortText" class="form-control" name="shortText" [(ngModel)]="post.shortText" required />
+					<div class="form-group">						
+						<input id="shortText" class="form-control" name="shortText" [(ngModel)]="post.shortText" placeholder="Краткийй текст" required />
 					</div>  
-					<div class="form-group">
-						<label for="fullText">Полный текст: </label>
-						<input type="fullText" id="fullText" class="form-control" name="fullText" [(ngModel)]="post.fullText" required />
+					<div class="form-group">												
+						<textarea type="fullText" id="fullText" class="form-control" name="fullText" [(ngModel)]="post.fullText" placeholder="Полнвй текст" required></textarea>
 					</div> 
 				  </div>
 				  <div class="modal-footer">
@@ -83,17 +80,14 @@
 				  <form [formGroup]="postForm">
 					  <div class="modal-body">
 						<div class="form-group">
-							<input type="hidden" formControlName="id" hidden="hidden" class="form-control" name="title" [(ngModel)]="post.id"/>
-							<label>title</label>
-							<input formControlName="title" class="form-control" name="title" [(ngModel)]="post.title" required />
+							<input type="hidden" formControlName="id" hidden="hidden" class="form-control" name="title" [(ngModel)]="post.id"/>							
+							<input formControlName="title" class="form-control" name="title" [(ngModel)]="post.title" placeholder="Заголовок" required />
 						</div>
-						<div class="form-group">
-							<label>Короткий текст</label>
-							<input formControlName="shortText" class="form-control" name="shortText" [(ngModel)]="post.shortText" required />
+						<div class="form-group">							
+							<input formControlName="shortText" class="form-control" name="shortText" [(ngModel)]="post.shortText" placeholder="Короткий текст" required />
 						</div>   
-						<div class="form-group">
-							<label>Полный текст: </label>
-							<input formControlName="fullText" id="fullText" class="form-control" name="fullText" [(ngModel)]="post.fullText" required />
+						<div class="form-group">							
+							<input formControlName="fullText" id="fullText" class="form-control" name="fullText" [(ngModel)]="post.fullText" placeholder="Полный текст" required />
 						</div> 						
 
 						

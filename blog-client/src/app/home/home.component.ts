@@ -19,7 +19,7 @@ export class HomeComponent {
 	  this.articleImgPath="./assets/images/article.png"
   }  
   
-    post: Post=new Post(null, "title", "text", "text", 0); // данные вводимого пользователя   
+    post: Post=new Post(null, "", "", "", 0); // данные вводимого пользователя   
 	postIdToUpdate = null;	
     receivedPost: Post; // полученный пользователь
     done: boolean = false;	

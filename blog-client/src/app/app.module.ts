@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http'; 
 import { AppComponent } from './app.component';
 import { PostService } from "app/services/post.service";
+import { CommentService } from "app/services/comment.service";
 import {Routes, RouterModule} from '@angular/router';
 
 import { AboutComponent }   from './about/about.component';
@@ -30,7 +31,7 @@ const appRoutes: Routes =[
 	HttpModule,
 	RouterModule.forRoot(appRoutes)
   ],
-  providers: [PostService],
+  providers: [PostService, CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
