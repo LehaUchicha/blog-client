@@ -1,0 +1,112 @@
+<article class="page">	
+	
+	<article class="panel panel-default posts">
+		<section class="panel panel-default">
+			<div class="panel-body">
+				<button class="btn btn-info" data-toggle="modal" data-target="#createModal">создать</button>
+			</div>
+		</section>
+		
+		<article class="panel panel-primary" *ngFor="let post of posts | async">
+				
+				<a routerLink="/post/{{post.id}}"><h4 class="panel-heading">{{post.title}}</h4></a>
+				<article class="panel-body">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" [src]="articleImgPath" alt="...">
+						</a>
+					</div>
+					<div class="media-body">
+						{{post.shortText}}
+					</div>
+				</article>
+			
+			<section>
+				<div class="btn-group" role="group" aria-label="...">	
+					
+				  <button type="button" class="btn btn-danger" (click)="deletePost(post.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+				  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#updateModal" (click)="loadPostToEdit(post.id)">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+				  </button>	
+				  <button class="btn btn-primary btn-right" type="button">
+					  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+					  <span class="badge">{{post.likes}}</span>
+				   </button>				  
+				</div>
+			</section>
+		</article>
+		
+	</article>
+	
+	
+			
+	<!--Modal-->
+	<div id="createModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+		<!-- Modal content-->
+			<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Создать статью</h4>
+				  </div>
+				  <div class="modal-body">
+					<div class="form-group">
+						<label for="login">Заголовок: </label>
+						<input id="title" class="form-control" name="title" [(ngModel)]="post.title" required />
+					</div>
+					<div class="form-group">
+						<label for="shortText">Короткий текст: </label>
+						<input id="shortText" class="form-control" name="shortText" [(ngModel)]="post.shortText" required />
+					</div>  
+					<div class="form-group">
+						<label for="fullText">Полный текст: </label>
+						<input type="fullText" id="fullText" class="form-control" name="fullText" [(ngModel)]="post.fullText" required />
+					</div> 
+				  </div>
+				  <div class="modal-footer">
+					<button class="btn btn-default" (click)="createPost(post)" data-dismiss="modal">Cоздать</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				  </div>
+				</div>
+		  </div>
+	</div>      
+
+	<div id="updateModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+		<!-- Modal content-->
+			<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">изменить статью r</h4>
+				  </div>
+				  <form [formGroup]="postForm">
+					  <div class="modal-body">
+						<div class="form-group">
+							<input type="hidden" formControlName="id" hidden="hidden" class="form-control" name="title" [(ngModel)]="post.id"/>
+							<label>title</label>
+							<input formControlName="title" class="form-control" name="title" [(ngModel)]="post.title" required />
+						</div>
+						<div class="form-group">
+							<label>Короткий текст</label>
+							<input formControlName="shortText" class="form-control" name="shortText" [(ngModel)]="post.shortText" required />
+						</div>   
+						<div class="form-group">
+							<label>Полный текст: </label>
+							<input formControlName="fullText" id="fullText" class="form-control" name="fullText" [(ngModel)]="post.fullText" required />
+						</div> 						
+
+						
+					  </div>
+					  <div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal" (click)="updatePost()">Сохранить</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					  </div>
+				  </form>
+				</div>
+		  </div>
+	</div>  
+<article>
+
+
+

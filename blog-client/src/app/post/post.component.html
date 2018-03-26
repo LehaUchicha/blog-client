@@ -1,0 +1,14 @@
+<div class="panel panel-warning posts" >
+	<div class="panel-heading">{{post.title}}: </div>
+	<div class="panel-body">{{post.shortText}}</div>
+	<div class="panel-body">{{post.fullText}}</div>	
+</div>
+
+<div class="panel panel-default posts">
+	<div class="panel-heading">Комментарии: </div>
+	<div class="panel-body">
+		<article class="well well-sm" *ngFor="let comment of comments | async">
+			{{comment.text}}
+		</article>
+	</div>
+</div>

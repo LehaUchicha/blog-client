@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Post } from "app/models/post";
+import { Comment } from "app/models/comment";
  
 @Injectable()
 export class PostService {
@@ -28,7 +29,7 @@ export class PostService {
    deletePostById(postId: string): Observable<number> {
 	let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
 	let options = new RequestOptions({ headers: cpHeaders });
-	return this.http.delete(this.postUrl +"/"+ postId)
+	return this.http.delete(this.postUrl +"/post/"+ postId)
 	       .map(success => success.status)
                .catch(this.handleError);
     }
@@ -36,7 +37,7 @@ export class PostService {
 	updatePostById(post: Post):Observable<number> {
 		let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: cpHeaders });		
-        return this.http.put(this.postUrl +"/"+ post.id, post, options)
+        return this.http.put(this.postUrl +"/post/"+ post.id, post, options)
                .map(success => success.status)
                .catch(this.handleError);
     }
@@ -44,8 +45,17 @@ export class PostService {
 	getPostById(postId: string): Observable<Post> {
 		let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: cpHeaders });
-		console.log(this.postUrl +"/"+ postId);
-		return this.http.get(this.postUrl +"/"+ postId)
+		console.log(this.postUrl +"/post/"+ postId);
+		return this.http.get(this.postUrl +"/post/"+ postId)
+		   .map(this.extractData)
+		   .catch(this.handleError);
+		}	
+		
+	getCommentsByPostId(postId: string): Observable<Comment> {
+		let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: cpHeaders });
+		console.log(this.postUrl +"/post/"+ postId);
+		return this.http.get(this.postUrl +"/post/"+ postId + "/comments")
 		   .map(this.extractData)
 		   .catch(this.handleError);
 		}	
