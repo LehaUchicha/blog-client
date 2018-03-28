@@ -1,0 +1,39 @@
+.page{
+	margin: auto;
+	width: 1000px;
+	height: 800px;	
+}
+.page > header{
+	margin: 2px;
+	width: 1000px;
+	height: 100px;	
+}
+
+.page nav {	
+	width: 20%;	
+	height: auto;	
+	float: right;
+}
+
+.posts{		
+	width: 79%;	
+	height: auto;	
+	float: left;
+}
+
+.post{	
+	width: 100%;
+	margin-bottom: 0.4%;
+	background-color: gray;	
+}
+
+
+.page footer{	
+	width: 100%;
+	height: auto;	
+}
+
+.separator{
+	clear:both;
+}
+

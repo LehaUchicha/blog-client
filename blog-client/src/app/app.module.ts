@@ -14,6 +14,7 @@ import { PostComponent }   from './post/post.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { PostService } from "app/services/post.service";
 import { CommentService } from "app/services/comment.service";
@@ -45,7 +46,8 @@ export function authHttpServiceFactory(http: Http) {
 	PostComponent,
 	LoginComponent,
 	AdminComponent,
-	UserComponent
+	UserComponent,
+	ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import {AdminAuthGuard} from './guard/admin-auth-guard.service';
 import {HomeComponent} from './home/home.component';
 import {UserComponent} from './user/user.component';
 import {PostComponent} from './post/post.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -22,11 +23,16 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    canActivate: [AuthGuard, AdminAuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'user',
     component: UserComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
     canActivate: [AuthGuard]
   },
   { 
@@ -35,7 +41,7 @@ const routes: Routes = [
 	},
   {
     path: '**',
-    redirectTo: '/home'
+    redirectTo: '/profile'
   },
   
 ];

@@ -29,6 +29,7 @@ export class UserService {
   }
 
   isAdminUser(): boolean {
+	  console.log(this.isAdmin);
     return this.isAdmin;
   }
 
