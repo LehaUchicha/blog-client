@@ -22,6 +22,7 @@
 	<div class="panel-body">
 		
 		<article class="well well-sm" *ngFor="let comment of comments | async">
+		<header>{{comment.authorName}} said:</header>
 			{{comment.text}}
 		</article>
 	</div>

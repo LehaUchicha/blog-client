@@ -1,37 +1,69 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http'; 
-import { AppComponent } from './app.component';
-import { PostService } from "app/services/post.service";
-import { CommentService } from "app/services/comment.service";
-import {Routes, RouterModule} from '@angular/router';
+import { Http, HttpModule } from '@angular/http'; 
+import { AuthConfig, AuthHttp } from 'angular2-jwt';
 
+import { AppRoutingModule } from './app-routing.module';
+
+import { AppComponent } from './app.component';
 import { AboutComponent }   from './about/about.component';
 import { HomeComponent }   from './home/home.component';
 import { NotFoundComponent }   from './not_found/not_found.component';
 import { PostComponent }   from './post/post.component';
+import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
 
-const appRoutes: Routes =[
-    { path: '', component: HomeComponent},
-	{ path: 'home', component: HomeComponent},
-    { path: 'about', component: AboutComponent},
-	{ path: 'post/:id', component: PostComponent},
-    { path: '**', component: NotFoundComponent }
-];
+import { PostService } from "app/services/post.service";
+import { CommentService } from "app/services/comment.service";
+import { AuthGuard } from './guard/auth.guard';
+import { AdminAuthGuard } from './guard/admin-auth-guard.service';
+import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
+import { AppDataService } from './services/app-data.service';
+
+import {TOKEN_NAME} from './services/auth.constant';
+
+export function authHttpServiceFactory(http: Http) {
+  return new AuthHttp(new AuthConfig({
+    headerPrefix: 'Bearer',
+    tokenName: TOKEN_NAME,
+    globalHeaders: [{'Content-Type': 'application/json'}],
+    noJwtError: false,
+    noTokenScheme: true,
+    tokenGetter: (() => localStorage.getItem(TOKEN_NAME))
+  }), http);
+}
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, AboutComponent, NotFoundComponent, PostComponent
+    AppComponent,
+	HomeComponent,
+	AboutComponent,
+	NotFoundComponent,
+	PostComponent,
+	LoginComponent,
+	AdminComponent,
+	UserComponent
   ],
   imports: [
     BrowserModule,
 	FormsModule,
 	ReactiveFormsModule,
 	HttpModule,
-	RouterModule.forRoot(appRoutes)
+	AppRoutingModule
   ],
-  providers: [PostService, CommentService],
+  providers: [
+    {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},
+	PostService, 
+	CommentService,
+	AuthGuard,
+    AuthenticationService,
+    UserService,
+	AdminAuthGuard,
+	AppDataService
+	],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
