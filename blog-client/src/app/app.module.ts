@@ -11,10 +11,12 @@ import { AboutComponent }   from './about/about.component';
 import { HomeComponent }   from './home/home.component';
 import { NotFoundComponent }   from './not_found/not_found.component';
 import { PostComponent }   from './post/post.component';
-import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TemplateComponent } from './template/template.component';
 
 import { PostService } from "app/services/post.service";
 import { CommentService } from "app/services/comment.service";
@@ -43,11 +45,13 @@ export function authHttpServiceFactory(http: Http) {
 	HomeComponent,
 	AboutComponent,
 	NotFoundComponent,
-	PostComponent,
-	LoginComponent,
+	PostComponent,	
 	AdminComponent,
 	UserComponent,
-	ProfileComponent
+	SignUpComponent,
+	SignInComponent,
+	ProfileComponent,
+	TemplateComponent
   ],
   imports: [
     BrowserModule,

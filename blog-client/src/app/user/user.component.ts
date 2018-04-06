@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-
-import {AppDataService} from '../services/app-data.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,12 +6,10 @@ import {AppDataService} from '../services/app-data.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  city$;
 
-  constructor(private appDataService: AppDataService) {
-  }
+  constructor() { }
 
   ngOnInit() {
-    this.city$ = this.appDataService.getUsers();
   }
+
 }

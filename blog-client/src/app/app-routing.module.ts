@@ -1,44 +1,53 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {LoginComponent} from './login/login.component';
 import {AdminComponent} from './admin/admin.component';
 import { AuthGuard } from './guard/auth.guard';
 import {AdminAuthGuard} from './guard/admin-auth-guard.service';
 
 import {HomeComponent} from './home/home.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
 import {UserComponent} from './user/user.component';
 import {PostComponent} from './post/post.component';
 import {ProfileComponent} from './profile/profile.component';
+import {TemplateComponent} from './template/template.component';
 
 const routes: Routes = [
+
   {
-    path: 'login',
-    component: LoginComponent
+    path: 'home', component: TemplateComponent,
+	children: [{path: '', component: HomeComponent }]
+    
   },
-  {
-    path: 'home',
-    component: HomeComponent
+   {
+    path: 'profile', component: TemplateComponent,
+	children: [{path: '', component: ProfileComponent, canActivate: [AuthGuard] }]
+    
+  },   
+   {
+    path: 'post/:id', component: TemplateComponent,
+	children: [{path: '', component: PostComponent}]
+    
+  },     
+   {
+    path: 'user', component: TemplateComponent,
+	children: [{path: '', component: UserComponent, canActivate: [AuthGuard]}]    
   },
+  
   {
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: 'user',
-    component: UserComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard]
-  },
-  { 
-	path: 'post/:id',
-	component: PostComponent
-	},
+  },  
+   {
+        path: 'signup', component: UserComponent,
+        children: [{ path: '', component: SignUpComponent }]
+   },
+   {
+        path: 'login', component: UserComponent,
+        children: [{ path: '', component: SignInComponent }]
+   },
   {
     path: '**',
     redirectTo: '/profile'

@@ -1,39 +1,4 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!DOCTYPE html>
-<article class="page">
 
-	<header class="panel panel-default"> 
-		<div class="panel-body">
-			Блог 
-		</div> 
-	</header>
-	
-	<ul class="nav nav-tabs">
-	  <li role="presentation" class="active"><a routerLink="/profile">Profile</a></li>
-	  <li role="presentation"><a routerLink="/home">Posts</a></li>
-	  <li routerLinkActive="active"><a routerLink="/user">User</a></li>
-	  <li role="presentation"><a href="/message">Messages</a></li>
-		  <ul class="nav navbar-nav navbar-right">
-			  <p class="navbar-text" *ngIf="isAdminUser">You are admin!</p>
-			  <p class="navbar-text" *ngIf="isUser">You are user!</p>
-			  <li><button class="btn navbar-btn" (click)="logout()">Logout</button></li>
-		</ul>
-	</ul>
-	
-	
-	
-	<nav class="panel panel-default posts">	
-		<ul class="nav nav-pills nav-stacked">
-			<li *ngFor="let post of posts | async"><a routerLink="/post/{{post.id}}">{{post.title}}</a></li>
-		</ul>		
-	</nav>
-	
-	<router-outlet></router-outlet>
-	
-	<div class="separator"></div>
-
-	<footer><span class="label label-info">@C Alex</span></footer>
-<article>
-
-
-
+<router-outlet></router-outlet>	

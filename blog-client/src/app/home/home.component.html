@@ -9,17 +9,17 @@
 		
 		<article class="panel panel-info" *ngFor="let post of posts | async">
 				
-				<h4 routerLink="/post/{{post.id}}" class="panel-heading">{{post.title}}</h4>
-				<article class="panel-body">
-					<div class="media-left">
-						<a href="#">
-							<img class="media-object" [src]="articleImgPath" alt="...">
-						</a>
-					</div>
-					<div class="media-body">
-						{{post.shortText}}
-					</div>
-				</article>
+			<h4 routerLink="/post/{{post.id}}" class="panel-heading">{{post.title}}</h4>
+			<article class="panel-body">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object" [src]="articleImgPath" alt="...">
+					</a>
+				</div>
+				<div class="media-body">
+					{{post.shortText}}
+				</div>
+			</article>
 			
 			<section>
 				<div class="btn-group" role="group" aria-label="...">	
