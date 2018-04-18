@@ -51,7 +51,7 @@ export function authHttpServiceFactory(http: Http) {
 	SignUpComponent,
 	SignInComponent,
 	ProfileComponent,
-	TemplateComponent
+	TemplateComponent	
   ],
   imports: [
     BrowserModule,

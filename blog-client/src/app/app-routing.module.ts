@@ -22,7 +22,7 @@ const routes: Routes = [
   },
    {
     path: 'profile', component: TemplateComponent,
-	children: [{path: '', component: ProfileComponent, canActivate: [AuthGuard] }]
+	children: [{path: '', component: ProfileComponent }]
     
   },   
    {
@@ -32,7 +32,7 @@ const routes: Routes = [
   },     
    {
     path: 'user', component: TemplateComponent,
-	children: [{path: '', component: UserComponent, canActivate: [AuthGuard]}]    
+	children: [{path: '', component: UserComponent}]    
   },
   
   {

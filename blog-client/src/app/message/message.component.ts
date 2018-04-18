@@ -8,9 +8,9 @@ import { CommentService } from 'app/services/comment.service';
 import { Comment } from "app/models/comment";
   
 @Component({
-    selector: 'post-app',
-    templateUrl: './post.component.html',
-	styleUrls: ['./app.component.css']
+    selector: 'message-app',
+    templateUrl: './message.component.html',
+	styleUrls: ['./message.component.css']
 })
 export class MessageComponent { 
 	
