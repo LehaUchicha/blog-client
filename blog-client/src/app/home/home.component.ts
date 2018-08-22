@@ -54,18 +54,24 @@ export class HomeComponent {
 	   .subscribe(post => {	       
 				console.log(postid);
 				this.postIdToUpdate = postid;	   
-	            this.postForm.setValue({ id: post.id, title: post.title, text: post.shortText});	   	     
+	            this.postForm.setValue({ 
+										id: post.id, 
+										title: post.title, 
+										shortText: 
+										post.shortText,
+										fullText: post.fullText, 
+										likes: post.likes});	   	     
 	   },
           error => console.log(error));
    }
    
    updatePost() { 	
 		let post = this.postForm.value;   
-		this.postService.updatePostById(post)
+		this.postService.updatePost(post)
 	      .subscribe(successCode => {		  
 		  this.done=true;
 		},
 		error => console.log(error));   
-		window.location.reload();
+		//window.location.reload();
     }
 }

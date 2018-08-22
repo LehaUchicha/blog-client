@@ -1,26 +1,17 @@
-<div class="panel panel-info posts" >
-	<div class="panel-heading">{{post.title}}: </div>
-	<div class="panel-body">{{post.shortText}}</div>
-	<div class="panel-body">{{post.fullText}}</div>	
+<div class="panel panel-info posts">
+  <!--<div class="panel-heading">{{post.title}}:</div>-->
+  <!--<div class="panel-body">{{post.shortText}}</div>-->
+  <!--<div class="panel-body">{{post.fullText}}</div>-->
 </div>
 
 <div class="panel panel-default posts">
-	<div class="panel-heading">Комментарии:
-	<section>					
-					<div class="form-group">						
-						<input id="shortText" class="form-control" name="shortText" [(ngModel)]="message.text" placeholder="Фраза" required />						
-					</div>  
-					<div class="form-group">						
-						<button class="btn btn-default" (click)="createMessage(comment)" data-dismiss="modal">Отправить</button>
-					</div>
-		</section>
-	</div>
-	
-	<div class="panel-body">
-		
-		<article class="well well-sm" *ngFor="let message of messages | async">
-		<header>{{messages.text}} said:</header>
-			{{messages.text}}
-		</article>
-	</div>
+  <div class="panel-heading">
+    Диалоги:
+  </div>
+
+  <div class="panel-body">
+    <article class="well well-sm" *ngFor="let message of messages | async">
+      {{message.name}}
+    </article>
+  </div>
 </div>

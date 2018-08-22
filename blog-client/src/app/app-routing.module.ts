@@ -12,34 +12,38 @@ import {UserComponent} from './user/user.component';
 import {PostComponent} from './post/post.component';
 import {ProfileComponent} from './profile/profile.component';
 import {TemplateComponent} from './template/template.component';
+import {MessageComponent} from './message/message.component';
 
 const routes: Routes = [
 
   {
     path: 'home', component: TemplateComponent,
 	children: [{path: '', component: HomeComponent }]
-    
+
   },
    {
     path: 'profile', component: TemplateComponent,
 	children: [{path: '', component: ProfileComponent }]
-    
-  },   
+
+  },
    {
     path: 'post/:id', component: TemplateComponent,
 	children: [{path: '', component: PostComponent}]
-    
-  },     
+
+  },
    {
     path: 'user', component: TemplateComponent,
-	children: [{path: '', component: UserComponent}]    
+	children: [{path: '', component: UserComponent}]
   },
-  
+  {
+  path: 'message', component: TemplateComponent,
+  children: [{path: '', component: MessageComponent}]
+  },
   {
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard]
-  },  
+  },
    {
         path: 'signup', component: UserComponent,
         children: [{ path: '', component: SignUpComponent }]
@@ -52,7 +56,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/profile'
   },
-  
+
 ];
 
 @NgModule({

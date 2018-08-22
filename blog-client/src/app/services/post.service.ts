@@ -42,6 +42,14 @@ export class PostService {
                .catch(this.handleError);
     }
 	
+	updatePost(post: Post):Observable<number> {
+		let cpHeaders = new Headers({'Content-Type': 'application/json' });
+		let options = new RequestOptions({ headers: cpHeaders });
+		return this.http.put(this.postUrl, post, options)
+				   .map(success => success.status)
+				   .catch(this.handleError);
+    }
+	
 	getPostById(postId: string): Observable<Post> {
 		let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
 		let options = new RequestOptions({ headers: cpHeaders });

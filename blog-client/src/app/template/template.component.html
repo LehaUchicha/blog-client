@@ -12,7 +12,7 @@
 	  <li role="presentation" class="active"><a routerLink="/profile">Profile</a></li>
 	  <li role="presentation"><a routerLink="/home">Posts</a></li>
 	  <li routerLinkActive="active"><a routerLink="/user">User</a></li>
-	  <li role="presentation"><a href="/message">Messages</a></li>
+	  <li role="presentation"><a routerLink="/message">Messages</a></li>
 		  <ul class="nav navbar-nav navbar-right">
 			  <p class="navbar-text" *ngIf="isAdminUser">You are admin!</p>
 			  <p class="navbar-text" *ngIf="isUser">You are user!</p>
