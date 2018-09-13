@@ -78,6 +78,7 @@ export class PostService {
         return body;
     }
 	
+	
 	/*public toPost(data: string): Post {
         let jsonData = JSON.parse(data);  
         postData = new Post(jsonData.id, jsonData.name, jsonData.surename);
