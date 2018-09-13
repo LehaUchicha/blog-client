@@ -7,7 +7,7 @@ import { Comment } from "app/models/comment";
 @Injectable()
 export class PostService {
 	
-	postUrl = "http://localhost:8090/api/posts";
+	postUrl = "https://alex-blog-server.herokuapp.com/posts";
 	
    constructor(private http: Http) {
    }
